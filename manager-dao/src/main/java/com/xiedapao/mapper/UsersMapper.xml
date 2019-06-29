@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiedapao.mapper.UsersMapper">
+    <insert id="insertUser" parameterType="com.xiedapao.pojo.User">
+        insert into user values(default,#{username},#{password},#{age},#{tel},#{photo})
+    </insert>
+
+    <select id="selectAll" resultType="com.xiedapao.pojo.User">
+        select * from user
+    </select>
+
+    <select id="selectByUsernameAndPassword" resultType="com.xiedapao.pojo.User" parameterType="com.xiedapao.pojo.User">
+        select * from user where username=#{username} and password=#{password}
+    </select>
+</mapper>

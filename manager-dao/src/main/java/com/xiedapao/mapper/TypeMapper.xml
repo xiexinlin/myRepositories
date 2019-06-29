@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiedapao.mapper.TypeMapper">
+    <insert id="insertType" parameterType="com.xiedapao.pojo.Type">
+        insert into types values(default,#{name})
+    </insert>
+
+    <select id="selectAll" resultType="com.xiedapao.pojo.Type">
+        select * from types
+    </select>
+
+    <select id="selectOne" resultType="com.xiedapao.pojo.Type" parameterType="com.xiedapao.pojo.Type">
+        select * from types where name=#{name}
+    </select>
+
+    <select id="selectById" resultType="com.xiedapao.pojo.Type" parameterType="int">
+        select * from types where id=#{0}
+    </select>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiedapao.mapper.AdminMapper">
+    <insert id="insertAdmin" parameterType="com.xiedapao.pojo.Admin">
+        insert into admin values(default,#{adminname},#{password},#{photo})
+    </insert>
+
+    <select id="selectByAdminnameAndPassword" parameterType="com.xiedapao.pojo.Admin" resultType="com.xiedapao.pojo.Admin">
+        select * from admin where adminname=#{adminname} and password=#{password}
+    </select>
+</mapper>

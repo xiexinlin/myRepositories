@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiedapao.mapper.CommodityMapper">
+    <insert id="insertCommodity" parameterType="com.xiedapao.pojo.Commodity">
+        insert into commodity values(default,#{name},#{price},#{photo},#{introduction},#{totalSale},#{monthSale},#{maxMonthSale},#{type_id},#{admin_id})
+    </insert>
+
+    <resultMap id="commodity" type="com.xiedapao.pojo.Commodity">
+        <association  property="type" javaType="com.xiedapao.pojo.Type" column="type_id" select="com.xiedapao.mapper.TypeMapper.selectById"></association>
+    </resultMap>
+    <select id="selectAll" resultMap="commodity">
+        select * from commodity
+    </select>
+
+    <select id="selectById" resultMap="commodity" parameterType="com.xiedapao.pojo.Commodity">
+        select * from commodity where id=#{id}
+    </select>
+
+    <update id="updateTotalSale" parameterType="com.xiedapao.pojo.Bill">
+        update commodity set totalSale=totalSale+#{quantity},monthSale=monthSale+#{quantity} where id=#{commodity_id}
+    </update>
+
+    <update id="updCommodity" parameterType="com.xiedapao.pojo.Commodity">
+        update commodity set name=#{name},price=#{price},photo=#{photo},introduction=#{introduction} where id=#{id}
+    </update>
+
+    <select id="selectPage" parameterType="com.xiedapao.pojo.Page" resultMap="commodity">
+        select * from commodity limit #{pageStart},#{page}
+    </select>
+
+    <select id="selectPageByType" resultMap="commodity">
+        select * from commodity where type_id=#{type.id} limit #{page.pageStart},#{page.page}
+    </select>
+
+    <select id="selectByType" resultMap="commodity" parameterType="com.xiedapao.pojo.Type">
+        select * from commodity where type_id=#{id}
+    </select>
+</mapper>
