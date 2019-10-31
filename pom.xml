@@ -27,7 +27,7 @@
     <servlet-api.version>3.1.0</servlet-api.version>
     <tomcat.version>2.2</tomcat.version>
     <jsp.version>2.0</jsp.version>
-    <fileupload.version>1.3.1</fileupload.version>
+    <fileupload.version>1.3.3</fileupload.version>
   </properties>
 
   <dependencyManagement>
